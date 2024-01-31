@@ -2,7 +2,58 @@
 ==============
 This is a fork of [codespell](https://github.com/codespell-project/codespell) to
 add column number along with line number in the output errors in following format:
-`<filename>:<line_number>:<column_number>: <wrong_word> ==> <right_word>`
+
+.. code-block:: sh
+
+   <filename>:<line_number>:<column_number>: <wrong_word> ==> <right_word>
+
+This fork was created to work with neovim's nvim-lint plugin along lsp-lines plugin.
+The spelling errors will be displayed at the exact word instead of at the start of line.
+To setup this in neovim follow these steps :
+
+1. Remove exisiting codespell from mason.
+
+2. Add following for nvim-lint config: 
+
+   .. code-block:: lua
+
+      require('lint').linters.codespell_columns = {
+          cmd = 'codespell',
+          stdin = false,
+          ignore_exitcode = true,
+          parser = require('lint.parser').from_errorformat(
+              '%f:%l:%c:%m',
+              {
+                  severity = vim.diagnostic.severity.INFO,
+                  source = 'codespell'
+              }
+          )
+      }
+
+3. Add following for mason config:
+
+   .. code-block:: lua
+
+      require("mason").setup({
+          registries = {
+            "github:mason-org/mason-registry",
+            "github:paramSonawane/mason-registry",
+        },
+        ensure_installed = {
+            "codespell_columns",
+        }
+      })
+
+4. Run ``:MasonInstallAll``
+
+5. Now the codespell_columns can be run via nvim-lint using:
+
+   .. code-block:: lua
+
+      :lua require('lint').try_lint("codespell_columns")
+  
+   or you can add this to your augroup
+  
 
 codespell
 =========
