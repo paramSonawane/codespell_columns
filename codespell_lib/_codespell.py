@@ -1071,8 +1071,9 @@ def parse_file(
                 if (not context_shown) and (context is not None):
                     print_context(lines, i, context)
                 if filename != "-":
+                    rline = line.find(word) + 1
                     print(
-                        f"{cfilename}:{cline}: {cwrongword} "
+                        f"{cfilename}:{cline}:{rline}: {cwrongword} "
                         f"==> {crightword}{creason}"
                     )
                 elif options.stdin_single_line:
