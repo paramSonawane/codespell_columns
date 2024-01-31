@@ -1,3 +1,9 @@
+!!Disclaimer!!
+==============
+This is a fork of [codespell](https://github.com/codespell-project/codespell) to
+add column number along with line number in the output errors in following format:
+`<filename>:<line_number>:<column_number>: <wrong_word> ==> <right_word>`
+
 codespell
 =========
 
