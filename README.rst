@@ -1,6 +1,6 @@
 !!Disclaimer!!
 ==============
-This is a fork of [codespell](https://github.com/codespell-project/codespell) to
+This is a fork of `codespell <https://github.com/codespell-project/codespell>`_ to
 add column number along with line number in the output errors in following format:
 
 .. code-block:: sh
