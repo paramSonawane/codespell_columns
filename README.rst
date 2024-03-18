@@ -53,7 +53,8 @@ To setup this in neovim follow these steps :
       :lua require('lint').try_lint("codespell_columns")
   
    or you can add this to your augroup
-  
+
+> Note that if you are having issues with UNKNOWN as installed package during MasonInstall upgrade the pip using ``pip install --upgrade pip``
 
 codespell
 =========
